@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class DocsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_params, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -12,11 +13,11 @@ class DocsController < ApplicationController
   end
 
   def new
-    @doc = Doc.new
+    @doc = current_user.docs.build
   end
 
   def create
-    @doc = Doc.new(doc_params)
+    @doc = current_user.docs.build(doc_params)
     if @doc.save
       redirect_to @doc
     else

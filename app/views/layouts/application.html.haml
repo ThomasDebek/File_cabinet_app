@@ -1,0 +1,28 @@
+
+!!!
+%html
+  %head
+    %title Forum Thomasa
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+    %body
+      %header.main_header.clearfix
+        .wrapper
+          #logo
+            %p= link_to "Doc", root_path
+          #buttons
+            - if user_signed_in?
+              = link_to "New Post", new_post_path
+              = link_to "Edit profile", edit_user_registration_path
+              = link_to "Logout", destroy_user_session_path, method: :delete
+            - else
+              = link_to "Sign Up", new_user_registration_path
+              = link_to "Sign In", new_user_session_path
+
+      %p.notice= notice
+      %p.alert= alert
+      = yield
