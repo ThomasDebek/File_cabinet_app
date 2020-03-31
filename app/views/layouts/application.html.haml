@@ -9,20 +9,33 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
-    %body
-      %header.main_header.clearfix
-        .wrapper
-          #logo
-            %p= link_to "Doc", root_path
-          #buttons
-            - if user_signed_in?
-              = link_to "New Post", new_post_path
-              = link_to "Edit profile", edit_user_registration_path
-              = link_to "Logout", destroy_user_session_path, method: :delete
-            - else
-              = link_to "Sign Up", new_user_registration_path
-              = link_to "Sign In", new_user_session_path
+  %body
+  %header.navbar.navbar-fixed-top.navbar-inverse
+    .container
+      .navbar-brand.navbar-left
+        =link_to "Doc ", docs_path, id: "logo"
+      .nav.navbar-nav.navbar-right
+        %ul
+          %li
+            #user_nav
+              = link_to "New doc",  new_doc_path
+              |
+              - if user_signed_in?
+                Logged in as
+                = succeed "." do
+                  %strong= current_user.email
+                = link_to 'Edit profile', edit_user_registration_path
+                |
+                \#{link_to "Logout", destroy_user_session_path, method: :delete}
+              - else
+                = link_to "Sign up", new_user_registration_path
+                |
+                \#{link_to "Login", new_user_session_path}
 
-      %p.notice= notice
-      %p.alert= alert
-      = yield
+
+
+  .container
+    - flash.each do |name, msg|
+      = content_tag :div, msg, class: "alert alert-info"
+    = yield
+
