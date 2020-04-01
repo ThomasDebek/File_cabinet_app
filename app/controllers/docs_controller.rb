@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class DocsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_params, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :find_params, only: %i[show edit update destroy]
 
   def index
-    @docs = Doc.all.order("created_at DESC")
+    @docs = Doc.all.order('created_at DESC')
   end
 
   def show

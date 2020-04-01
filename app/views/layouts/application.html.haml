@@ -2,7 +2,7 @@
 !!!
 %html
   %head
-    %title Forum Thomasa
+    %title File Cabinet
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -34,7 +34,7 @@
 
 
 
-  .container
+  .yield
     - flash.each do |name, msg|
       = content_tag :div, msg, class: "alert alert-info"
     = yield
