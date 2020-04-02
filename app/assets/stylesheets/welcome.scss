@@ -1,18 +1,6 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
-
-
-// STYLING FOR WELCOME PAGE
-
 #banner {
-  background-image: url(image_path("welcome_banner_image.jpg"));
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
   width: 100%;
-  min-height: 500px;
+  min-height: 450px;
   display: table;
   .banner_content {
     display: table-cell;
@@ -49,13 +37,14 @@
 }
 
 #callouts {
-  background-image: image-url("callout_background.jpg");
+  background-image: url(image_path("callout_backgroung.jpg"));
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
   width: 100%;
-  min-height: 400px;
+  min-height: 500px;
   display: table;
+
   .callout_inner {
     display: table-cell;
     vertical-align: middle;
@@ -71,12 +60,13 @@
       margin-bottom: 0;
     }
     p {
-      color: rgba(255, 255, 255, 0.9);
+      color: white;
     }
   }
 }
 
 #bottom_cta {
+  min-height: 450px;
   text-align: center;
   padding: 7.5rem 0;
   h2 {

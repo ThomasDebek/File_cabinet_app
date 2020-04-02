@@ -17,7 +17,17 @@
 @import "bootstrap";
 
 
-@import 'normalize.css.scss';
+.yield {
+  margin-top: 100px;
+  margin-left: 10px;
+}
+
+
+/*
+
+ *= require_self
+ */
+@import "normalize.css.scss";
 @import "global.css.scss";
 @import "docs.scss";
 @import "welcome.scss";
