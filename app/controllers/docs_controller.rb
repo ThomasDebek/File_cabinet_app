@@ -7,6 +7,10 @@ class DocsController < ApplicationController
   def index
     # @docs = Doc.all.order('created_at DESC')
     @docs = Doc.where(user_id: current_user)
+    @user = User.all
+    @docs_all = Doc.all
+      #@doc_users = Doc.user.find(params[:id])
+
   end
 
   def show

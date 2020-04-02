@@ -1,21 +1,61 @@
 %h2 Index Docs
 %table
+  %h4 Only logged Users
+  %thead
+    %tr
+      - if user_signed_in? && current_user
+        %th Title
+        %th Content
+        %th Created
+        %th User
+        %th{:colspan => "3"}
+        %tbody
+          - @docs.each do |doc|
+            %tr
+            %td= doc.title
+            %td= truncate(doc.content, length: 50)
+            %td= time_ago_in_words(doc.created_at)
+            %td= current_user.email
+            %td= link_to 'Show', doc
+            %td= link_to 'Edit', edit_doc_path(doc)
+            %td= link_to 'Delete', doc, method: :delete, date: {confiirm: 'Are you Sure'}
+      - else
+        %h3 Notihing is here yet create for you. Please create a new doc
+
+
+%br/
+%h2
+  = link_to "New doc", new_doc_path
+
+%h3 All Users
+- @user.each  do |user|
+  %td= user.email
+  %br/
+
+
+
+%br/
+%br/
+%br/
+%br/
+
+
+%h4 All Doc and user
+%table
   %thead
     %tr
       %th Title
       %th Content
       %th Created
-      %th{:colspan => "3"}
+      %th User
       %tbody
-        - @docs.each do |doc|
+        - @docs_all.each do |doc|
           %tr
-            %td= doc.title
-            %td= truncate(doc.content, length: 50)
-            %td= time_ago_in_words(doc.created_at)
-            %td= link_to 'Show', doc
-            %td= link_to 'Edit', edit_doc_path(doc)
-            %td= link_to 'Delete', doc, method: :delete, date: {confiirm: 'Are you Sure'}
+          %td= doc.title
+          %td= truncate(doc.content, length: 50)
+          %td= time_ago_in_words(doc.created_at)
+          - if !current_user
+            %td= doc.user.email
+          - else
+            %td= current_user.email
 
-%br/
-%h2
-  = link_to "New doc", new_doc_path
