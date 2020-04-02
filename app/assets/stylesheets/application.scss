@@ -16,6 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+@import 'normalize.css.scss';
+@import "global.css.scss";
+@import "docs.scss";
+@import "welcome.scss";
+
 .yield {
   margin-top: 100px;
   margin-left: 10px;
