@@ -1,5 +1,7 @@
-%h2 Edit Docs
-= render 'form'
+.wrapper_with_padding
+  %h1 Edit Doc!
 
-%p
+  = render 'form'
+  = link_to "Cancel", doc_path
   = link_to 'back', docs_path
+
