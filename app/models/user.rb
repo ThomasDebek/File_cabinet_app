@@ -8,5 +8,7 @@ class User < ApplicationRecord
 
   has_many :docs, dependent: :destroy
 
+  validates :email, presence: true
+
 
 end
